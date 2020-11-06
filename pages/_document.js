@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
         </Head>
         <body>
           <Main />

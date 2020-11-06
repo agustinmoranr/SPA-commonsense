@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import style from './character.module.css'
+
 const API =  'https://rickandmortyapi.com/api/character/'
-console.log(API)
 
 const productItem = () => {
+  //initialState
   const [character, setCharacter] = useState({episode: []})
+
+  //get id
   const { query: { id }, } = useRouter([]);
-  console.log(character)
+
+  //getData
     useEffect(() => {
     if(id) {
       window.fetch(`${API}${id}`)
@@ -15,38 +20,23 @@ const productItem = () => {
       }
     }, [id])
 
-    console.log(character)
-
   return (
-    <div>
-    <h1>hola: {id}</h1>
-      <div>
-        <img src={character.image}/>
+    <main className={style.section}>
+      <div className={style.container}>
+        <div className={style.picture}>
+          <img src={character.image}/>
+          <h1>{character.name}</h1>
+        </div>
+        <div className={style.list}>
+          <h3>Nombre: {character.name}</h3>
+          <h3>Estado: {character.status}</h3>
+          <h3>Especie: {character.species}</h3>
+          <h3>Genero: {character.gender}</h3>
+          <h3>Episodios: {character.episode.length}</h3>
+        </div>
       </div>
-      <div>
-        <ul>
-          <li>Nombre: {character.name}</li>
-          <li>Estado: {character.status}</li>
-          <li>Especie: {character.species}</li>
-          <li>Genero: {character.gender}</li>
-          <li>Episodios: {character.episode.length}</li>
-        </ul>
-      </div>
-    </div>
+    </main>
   )
 }
-
-// export async function getStaticProps() {
-//   const response = await fetch('')
-
-//   const paths = {
-//     params: {id: character.id},
-//   }
-
-//   return {
-//     paths, 
-//     fallback: false
-//   }
-// }
 
 export default productItem

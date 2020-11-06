@@ -1,54 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import Header from '../components/Header/Header'
-import getCharacters from '../utils/getCharacter'
-import { Button } from '@material-ui/core'
-const Home = () => {
-  const [characters, setCharacters] = useState([])
+import styles from './index.module.css'
+import Section from '../components/section/Section'
+import Item from '../components/Item/Item'
 
+
+const Home = () => {
+  //initial State
+  const [characters, setCharacters] = useState({lista: []})
+
+  //get data
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character/')
     .then((response) => response.json())
-    .then(({results}) => {
-      setCharacters(results)
+    .then((data) => {
+      setCharacters({lista: data.results})
     })
 
   }, [])
 
-  console.log(characters)
-
   return (
-    <div>
-      <Header />
-      <Button>
-        Button
-      </Button>
-      <Button onClick={() => alert('Hola')} variant="contained" color="primary">
-        Primary
-      </Button>
-      <div>
-        <div>Characters</div>
-        {characters.map((character) => (
-          <div key={character.id}>
-            <div >{character.name}</div>
-            <img src={character.image} />
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      <main className={styles.content}>
+        <Section>
+          {characters.lista.map((character) => (
+              <Item key={character.id} {...character} sectionTitle="Personajes" />
+          ))}
+        </Section>
+      </main>
+    </>
   )
 }
-
-// export async function getStaticProps () {
-//   const response =  await fetch('https://rickandmortyapi.com/api/character/')
-//   const characters = await response.json()
-//   console.log(characters)
-
-//   return {
-//     props: {
-//       characters,
-//     },
-//   }
-// }
 
 export default Home

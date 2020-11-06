@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
 
 const about = () => {
   return (
-    <div>
-      <Navbar/>
-      <p>Hola Nosotros somos kite, un sitio profesional</p>
+    <div style={{height: "80vh"}}>
+      <div style={{padding: '5rem 20rem'}}>
+        <h1 style={{marginTop: '10vh'}}>Hola, bienvenido nuestro sitio profesional</h1>
+      </div>
     </div>
   )
 }
