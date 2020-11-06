@@ -1,0 +1,26 @@
+{
+  "name": "platzi-nextjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "4.9.1",
+    "@zeit/next-sass": "^1.0.1",
+    "next": "10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.1",
+    "node-sass": "^5.0.0"
+  }
+}
